@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopClone</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+
+        <div class="logo">ShopClone</div>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#products">Products</a>
+            <a href="#">Contact</a>
+
+            <span class="cart">
+                🛒 Cart: <span id="cart-count">0</span>
+            </span>
+        </nav>
+
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+
+        <h1>Welcome to ShopClone</h1>
+
+        <p>
+            Discover amazing products at great prices.
+        </p>
+
+        <a href="#products" class="shop-button">
+            Shop Now
+        </a>
+
+    </section>
+
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+
+        <h2>Featured Products</h2>
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search products...">
+        </div>
+
+        <div class="product-container">
+
+
+            <!-- Product 1 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    👟
+                </div>
+
+                <h3>Classic Shoes</h3>
+
+                <p>Rs. 1499</p>
+
+                <button>Add to Cart</button>
+
+            </div>
+
+
+            <!-- Product 2 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    🎧
+                </div>
+
+                <h3>Wireless Headphones</h3>
+
+                <p>Rs. 2499</p>
+
+                <button>Add to Cart</button>
+
+            </div>
+
+
+            <!-- Product 3 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    ⌚
+                </div>
+
+                <h3>Smart Watch</h3>
+
+                <p>Rs. 1999</p>
+
+                <button>Add to Cart</button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+
+        <h2>Your Cart</h2>
+
+        <div id="cart-items">
+
+            <p>Your cart is empty.</p>
+
+        </div>
+
+        <h3>
+            Total: Rs.
+            <span id="cart-total">0</span>
+        </h3>
+
+    </section>
+    <footer>
+        <p>© 2026 ShopClone. Built with HTML, CSS and JavaScript.</p>
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

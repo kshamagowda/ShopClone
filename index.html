@@ -3,136 +3,804 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-    <title>ShopClone</title>
+    <title>Kshamadharithri H P</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #12141c;
+            --bg-raise: #1a1d29;
+            --text: #e9e9ee;
+            --text-dim: #9a9db0;
+            --accent: #d4a24c;
+            --line: #2a2e3d;
+
+            --font-head: 'Space Grotesk', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        @media (prefers-color-scheme: light) {
+
+            :root:not([data-theme="dark"]) {
+                --bg: #f7f5f0;
+                --bg-raise: #ffffff;
+                --text: #1b1c22;
+                --text-dim: #5b5d6b;
+                --accent: #a06a1f;
+                --line: #ded9cd;
+            }
+
+        }
+
+        :root[data-theme="light"] {
+            --bg: #f7f5f0;
+            --bg-raise: #ffffff;
+            --text: #1b1c22;
+            --text-dim: #5b5d6b;
+            --accent: #a06a1f;
+            --line: #ded9cd;
+        }
+
+        html {
+            scroll-padding-top: env(safe-area-inset-top, 0px);
+            scroll-behavior: smooth;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .wrap {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header.top {
+            position: sticky;
+            top: env(safe-area-inset-top, 0px);
+            background: color-mix(in srgb, var(--bg) 88%, transparent);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--line);
+            z-index: 10;
+        }
+
+        header.top .wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 56px;
+            max-width: 760px;
+        }
+
+        .brand {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--text-dim);
+        }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 14px;
+            margin-left: 20px;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            padding: 84px 0 56px;
+        }
+
+        .hero p.eyebrow {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            font-size: 13px;
+            margin: 0 0 14px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: clamp(34px, 6vw, 54px);
+            line-height: 1.08;
+            margin: 0 0 18px;
+            letter-spacing: -0.01em;
+        }
+
+        .hero .lede {
+            font-size: 18px;
+            color: var(--text-dim);
+            max-width: 56ch;
+            margin: 0 0 28px;
+        }
+
+        .hero .meta {
+            font-size: 14px;
+            color: var(--text-dim);
+        }
+
+        .hero .meta strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        section {
+            padding: 44px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        section h2 {
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 22px;
+            margin: 0 0 18px;
+        }
+
+        .about p {
+            max-width: 68ch;
+            color: var(--text-dim);
+            font-size: 16px;
+        }
+
+        .about p strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .project {
+            padding: 20px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .project:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .project h3 {
+            font-family: var(--font-head);
+            font-size: 19px;
+            margin: 0 0 6px;
+        }
+
+        .project .stack {
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+            color: var(--accent);
+            margin: 0 0 10px;
+        }
+
+        .project p {
+            color: var(--text-dim);
+            font-size: 15px;
+            margin: 0 0 10px;
+            max-width: 62ch;
+        }
+
+        .project ul {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--text-dim);
+            font-size: 15px;
+        }
+
+        .project li {
+            margin-bottom: 6px;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--accent);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px 32px;
+        }
+
+        @media (max-width: 560px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .skill-group h4 {
+            font-family: var(--font-mono);
+            font-size: 12.5px;
+            color: var(--text-dim);
+            font-weight: 500;
+            margin: 0 0 8px;
+        }
+
+        .skill-group p {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .education-item {
+            padding: 18px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .education-item:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .education-item h3 {
+            font-family: var(--font-head);
+            font-size: 18px;
+            margin: 0 0 5px;
+        }
+
+        .education-item p {
+            margin: 4px 0;
+            color: var(--text-dim);
+            font-size: 15px;
+        }
+
+        .education-item strong {
+            color: var(--text);
+        }
+
+        .contact .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .contact a.btn {
+            display: inline-block;
+            padding: 10px 18px;
+            border: 1px solid var(--line);
+            border-radius: 3px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            transition: border-color .15s, color .15s;
+        }
+
+        .contact a.btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        footer {
+            padding: 28px 0 40px;
+            color: var(--text-dim);
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+
+            header.top .wrap {
+                height: auto;
+                min-height: 56px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                gap: 5px;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 65px 0 45px;
+            }
+
+            .hero .lede {
+                font-size: 16px;
+            }
+
+        }
+    </style>
 </head>
+
 
 <body>
 
-    <!-- Navigation Bar -->
-    <header>
 
-        <div class="logo">ShopClone</div>
+    <header class="top">
 
-        <nav>
-            <a href="#">Home</a>
-            <a href="#products">Products</a>
-            <a href="#">Contact</a>
+        <div class="wrap">
 
-            <span class="cart">
-                🛒 Cart: <span id="cart-count">0</span>
-            </span>
-        </nav>
+            <span class="brand">kshama.dev</span>
+
+            <nav>
+
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
+
+            </nav>
+
+        </div>
 
     </header>
 
 
-    <!-- Hero Section -->
-    <section class="hero">
-
-        <h1>Welcome to ShopClone</h1>
-
-        <p>
-            Discover amazing products at great prices.
-        </p>
-
-        <a href="#products" class="shop-button">
-            Shop Now
-        </a>
-
-    </section>
+    <div class="wrap">
 
 
-    <!-- Products Section -->
-    <section class="products" id="products">
+        <!-- HERO -->
 
-        <h2>Featured Products</h2>
-        <div class="search-box">
-            <input type="text" id="search-input" placeholder="Search products...">
-        </div>
+        <section class="hero" style="border-top:none;">
 
-        <div class="product-container">
+            <p class="eyebrow">
+                Information Science Engineering · Class of 2027
+            </p>
+
+            <h1>
+                Kshamadharithri H P
+            </h1>
+
+            <p class="lede">
+                I build AI-integrated applications, software projects, and data-driven systems with a focus on practical
+                problem solving and clean, working code.
+            </p>
+
+            <p class="meta">
+                Based in <strong>Bengaluru, India</strong>
+                · Open to Software Development &amp; Data Analyst roles
+            </p>
+
+        </section>
 
 
-            <!-- Product 1 -->
-            <div class="product-card">
 
-                <div class="product-image">
-                    👟
-                </div>
+        <!-- ABOUT -->
 
-                <h3>Classic Shoes</h3>
+        <section id="about" class="about">
 
-                <p>Rs. 1499</p>
+            <h2>About</h2>
 
-                <button>Add to Cart</button>
+            <p>
+                I'm a fourth-year
+                <strong>Information Science &amp; Engineering</strong>
+                student at AMC Engineering College with a CGPA of
+                <strong>8.82/10</strong>, interested in software development,
+                applied AI, and data-driven applications.
+            </p>
+
+            <p>
+                I enjoy learning by building practical projects. My work includes
+                conversational AI, NLP-based matching, Java applications, and
+                responsive web development.
+            </p>
+
+            <p>
+                I'm currently strengthening my skills in
+                <strong>Java, Python, JavaScript, DSA, backend development, SQL, and software development
+                    fundamentals.</strong>
+            </p>
+
+        </section>
+
+
+
+        <!-- PROJECTS -->
+
+        <section id="projects">
+
+            <h2>Projects</h2>
+
+
+            <!-- AI PROJECT -->
+
+            <div class="project">
+
+                <h3>
+                    AI Conversational Agent with Persistent Memory
+                </h3>
+
+                <p class="stack">
+                    JavaScript · Node.js · Express · Groq API · JSON · HTML · CSS
+                </p>
+
+                <ul>
+
+                    <li>
+                        Built a conversational agent that maintains context across conversations using a persistent
+                        memory system.
+                    </li>
+
+                    <li>
+                        Designed a JSON-based memory store to save, update, and retrieve user information.
+                    </li>
+
+                    <li>
+                        Integrated the Groq LLM API with a Node.js and Express backend for context-aware responses.
+                    </li>
+
+                    <li>
+                        Developed a responsive real-time chat interface using HTML, CSS, and JavaScript.
+                    </li>
+
+                </ul>
 
             </div>
 
 
-            <!-- Product 2 -->
-            <div class="product-card">
 
-                <div class="product-image">
-                    🎧
-                </div>
+            <!-- NLP PROJECT -->
 
-                <h3>Wireless Headphones</h3>
+            <div class="project">
 
-                <p>Rs. 2499</p>
+                <h3>
+                    AI-Driven Startup Collaboration &amp; B2B Service Platform
+                </h3>
 
-                <button>Add to Cart</button>
+                <p class="stack">
+                    Python · NLP · TF-IDF · Cosine Similarity
+                </p>
+
+                <ul>
+
+                    <li>
+                        Built a matching system to connect startups with relevant collaborators and B2B service
+                        providers.
+                    </li>
+
+                    <li>
+                        Applied Natural Language Processing techniques to process startup requirements and service
+                        descriptions.
+                    </li>
+
+                    <li>
+                        Used TF-IDF vectorization to represent textual information.
+                    </li>
+
+                    <li>
+                        Applied cosine similarity to calculate and rank potential matches.
+                    </li>
+
+                </ul>
 
             </div>
 
 
-            <!-- Product 3 -->
-            <div class="product-card">
 
-                <div class="product-image">
-                    ⌚
-                </div>
+            <!-- SHOPCLONE -->
 
-                <h3>Smart Watch</h3>
+            <div class="project">
 
-                <p>Rs. 1999</p>
+                <h3>
+                    ShopClone — E-Commerce Web Application
+                </h3>
 
-                <button>Add to Cart</button>
+                <p class="stack">
+                    HTML · CSS · JavaScript · DOM Manipulation · localStorage
+                </p>
+
+                <ul>
+
+                    <li>
+                        Built a responsive e-commerce interface with product listings and shopping cart functionality.
+                    </li>
+
+                    <li>
+                        Implemented product search, add-to-cart, and remove-from-cart functionality.
+                    </li>
+
+                    <li>
+                        Added dynamic cart count and automatic total-price calculation using JavaScript.
+                    </li>
+
+                    <li>
+                        Used browser localStorage to preserve cart data after page refresh.
+                    </li>
+
+                </ul>
+
+                <a class="project-link" href="https://github.com/kshamagowda/ShopClone" target="_blank" rel="noopener">
+                    View on GitHub →
+                </a>
 
             </div>
 
-        </div>
-
-    </section>
 
 
-    <!-- Cart Section -->
-    <section class="cart-section">
+            <!-- EXPENSE TRACKER -->
 
-        <h2>Your Cart</h2>
+            <div class="project">
 
-        <div id="cart-items">
+                <h3>
+                    Expense Tracker
+                </h3>
 
-            <p>Your cart is empty.</p>
+                <p class="stack">
+                    Java · ArrayList · Scanner · Loops · Switch Statements
+                </p>
 
-        </div>
+                <ul>
 
-        <h3>
-            Total: Rs.
-            <span id="cart-total">0</span>
-        </h3>
+                    <li>
+                        Developed a Java console application for recording and managing personal expenses.
+                    </li>
 
-    </section>
-    <footer>
-        <p>© 2026 ShopClone. Built with HTML, CSS and JavaScript.</p>
-    </footer>
+                    <li>
+                        Implemented features to add expenses, view recorded expenses, and calculate total spending.
+                    </li>
+
+                    <li>
+                        Used ArrayList to store expense names and amounts dynamically.
+                    </li>
+
+                    <li>
+                        Created a menu-driven interface using loops and switch statements.
+                    </li>
+
+                </ul>
+
+                <a class="project-link" href="https://github.com/kshamagowda/ExpenseTracker" target="_blank"
+                    rel="noopener">
+                    View on GitHub →
+                </a>
+
+            </div>
 
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+
+            <!-- GRADE CALCULATOR -->
+
+            <div class="project">
+
+                <h3>
+                    Student Grade Calculator
+                </h3>
+
+                <p class="stack">
+                    Java · Scanner · Conditional Statements
+                </p>
+
+                <ul>
+
+                    <li>
+                        Developed a Java application to calculate student average marks and assign grades.
+                    </li>
+
+                    <li>
+                        Accepted student details and subject marks through console input.
+                    </li>
+
+                    <li>
+                        Calculated average marks using arithmetic operations.
+                    </li>
+
+                    <li>
+                        Used conditional statements to determine and display the appropriate grade.
+                    </li>
+
+                </ul>
+
+                <a class="project-link" href="https://github.com/kshamagowda/StudentGradeCalculator" target="_blank"
+                    rel="noopener">
+                    View on GitHub →
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- SKILLS -->
+
+        <section id="skills">
+
+            <h2>Skills</h2>
+
+            <div class="skills-grid">
+
+
+                <div class="skill-group">
+
+                    <h4>Languages</h4>
+
+                    <p>
+                        Java, Python, C, JavaScript, HTML, CSS
+                    </p>
+
+                </div>
+
+
+                <div class="skill-group">
+
+                    <h4>Core Concepts</h4>
+
+                    <p>
+                        Data Structures &amp; Algorithms, OOP, DBMS, Statistics, Probability
+                    </p>
+
+                </div>
+
+
+                <div class="skill-group">
+
+                    <h4>Frameworks / Runtime</h4>
+
+                    <p>
+                        Node.js, Express.js
+                    </p>
+
+                </div>
+
+
+                <div class="skill-group">
+
+                    <h4>Data &amp; AI</h4>
+
+                    <p>
+                        Pandas, NumPy, Matplotlib, Data Analysis, NLP, Machine Learning Basics, TF-IDF, Cosine
+                        Similarity
+                    </p>
+
+                </div>
+
+
+                <div class="skill-group">
+
+                    <h4>APIs</h4>
+
+                    <p>
+                        REST APIs, LLM API Integration, Groq API
+                    </p>
+
+                </div>
+
+
+                <div class="skill-group">
+
+                    <h4>Tools</h4>
+
+                    <p>
+                        Git, GitHub, VS Code
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- EDUCATION -->
+
+        <section id="education">
+
+            <h2>Education</h2>
+
+
+            <div class="education-item">
+
+                <h3>
+                    AMC Engineering College — Bengaluru
+                </h3>
+
+                <p>
+                    <strong>Bachelor of Engineering — Information Science &amp; Engineering</strong>
+                </p>
+
+                <p>
+                    2023 – 2027 · CGPA: <strong>8.82 / 10</strong>
+                </p>
+
+                <p>
+                    Relevant Coursework: Data Structures, Artificial Intelligence,
+                    Machine Learning, DBMS, Cybersecurity, Statistics, Probability
+                </p>
+
+            </div>
+
+
+            <div class="education-item">
+
+                <h3>
+                    Sharada PU College — Mangalore
+                </h3>
+
+                <p>
+                    <strong>Pre-University Certificate — PCMB</strong>
+                </p>
+
+                <p>
+                    2020 – 2022 · Percentage: <strong>91%</strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CONTACT -->
+
+        <section id="contact" class="contact">
+
+            <h2>Contact</h2>
+
+            <p style="color:var(--text-dim); margin:0 0 4px;">
+                Happy to talk about internships, software development, data roles, or the projects above.
+            </p>
+
+            <div class="links">
+
+                <a class="btn" href="mailto:kshamagowda567@gmail.com">
+                    Email
+                </a>
+
+
+                <a class="btn" href="https://www.linkedin.com/in/kshamadharithri-h-p-ab2165329" target="_blank"
+                    rel="noopener">
+                    LinkedIn
+                </a>
+
+
+                <a class="btn" href="https://github.com/kshamagowda/Kshama" target="_blank" rel="noopener">
+                    GitHub
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer>
+            Kshamadharithri H P · Bengaluru, Karnataka · Class of 2027
+        </footer>
+
+
+    </div>
+
 
 </body>
 
